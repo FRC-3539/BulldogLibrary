@@ -6,7 +6,7 @@
     "mavenUrls": [
       "https://jitpack.io"
     ],
-    "jsonUrl": "https://github.com/BytingBulldogs3539/BulldogLibrary/BulldogLibrary.json",
+    "jsonUrl": "https://raw.githubusercontent.com/BytingBulldogs3539/BulldogLibrary/main/BulldogLibrary.json",
     "javaDependencies": [
       {
         "groupId": "org.github.BytingBulldogs",
