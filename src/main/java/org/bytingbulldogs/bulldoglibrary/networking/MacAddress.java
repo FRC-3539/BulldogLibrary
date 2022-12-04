@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /** Used to get the mac addresses of the robot and other devices. */
 public class MacAddress {
 	String practice;
-    boolean listAddresses
+    boolean listAddresses;
 
 	public MacAddress(String practice) {
 		this(practice, true);
