@@ -16,14 +16,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /** Used to get the mac addresses of the robot and other devices. */
 public class MacAddress {
 	String practice;
-    boolean listAddresses;
+	boolean listAddresses;
 
 	public MacAddress(String practice) {
 		this(practice, true);
 	}
-    public MacAddress(String practice, boolean listAddresses) {
+
+	public MacAddress(String practice, boolean listAddresses) {
 		this.practice = practice;
-        this.listAddresses = listAddresses;
+		this.listAddresses = listAddresses;
 	}
 
 	public boolean getIsPractice() {
@@ -61,20 +62,19 @@ public class MacAddress {
 
 			macAddresses.add(address);
 		}
-        
+
 		listAddresses(macAddresses);
 
 		return macAddresses;
 	}
 
 	public void listAddresses(List<byte[]> macAddresses) {
-        if(listAddresses)
-        {
-		    String[] macAddressStrings;
-		    macAddressStrings = macAddresses.stream().map(this::macToString).toArray(String[]::new);
-		    SmartDashboard.putStringArray("MAC Addresses", macAddressStrings);
-		    SmartDashboard.putString("Practice Bot MAC Address", practice);
-        }
+		if (listAddresses) {
+			String[] macAddressStrings;
+			macAddressStrings = macAddresses.stream().map(this::macToString).toArray(String[]::new);
+			SmartDashboard.putStringArray("MAC Addresses", macAddressStrings);
+			SmartDashboard.putString("Practice Bot MAC Address", practice);
+		}
 
 	}
 
