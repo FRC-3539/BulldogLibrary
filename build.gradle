@@ -8,7 +8,7 @@ targetCompatibility = JavaVersion.VERSION_11
 
 allprojects {
     group 'org.bytingbulldogs'
-    version '1.0.0'
+    version '1.1.0'
 
     repositories {
         mavenCentral()
@@ -21,9 +21,9 @@ allprojects {
 }
 
 dependencies {
-    implementation "edu.wpi.first.wpilibj:wpilibj-java:2022.4.1"
-    implementation "edu.wpi.first.wpiutil:wpiutil-java:2022.4.1"
-    implementation "edu.wpi.first.wpimath:wpimath-java:2022.4.1"
+    implementation "edu.wpi.first.wpilibj:wpilibj-java:2023.2.1"
+    implementation "edu.wpi.first.wpiutil:wpiutil-java:2023.2.1"
+    implementation "edu.wpi.first.wpimath:wpimath-java:2023.2.1"
 
     implementation group: 'org.ini4j', name: 'ini4j', version: '0.5.4'
 
