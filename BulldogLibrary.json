@@ -9,7 +9,7 @@
     "jsonUrl": "https://raw.githubusercontent.com/BytingBulldogs3539/BulldogLibrary/main/BulldogLibrary.json",
     "javaDependencies": [
       {
-        "groupId": "com.github.BytingBulldogs",
+        "groupId": "com.github.BytingBulldogs3539",
         "artifactId": "BulldogLibrary",
         "version": "1.1.0"
       }
