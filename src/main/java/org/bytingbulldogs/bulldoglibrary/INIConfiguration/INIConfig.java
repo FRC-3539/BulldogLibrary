@@ -30,24 +30,23 @@ public class INIConfig {
 	public void autoPopulate(Object o) {
 		if (ini != null) {
 			Field[] fields = o.getClass().getFields();
-			for (Field field : fields) {
-				String[] split = field.getName().split("_");
-				int length = split.length;
-				if (length >= 2) {
-					try {
-						
-						if(getOrDefault(split[split.length - 2], split[split.length - 1], null, field.getType())!=null)
-						{
-							field.set(o,
-								getOrDefault(split[split.length - 2], split[split.length - 1], null, field.getType()));
-						}
+			String className = o.getClass().getSimpleName();
 
-					} catch (IllegalArgumentException | IllegalAccessException e) {
-						DriverStation.reportWarning("Could not load item " + field.getName() + " from file " + filename,
-								e.getStackTrace());
+			for (Field field : fields) {
+				String fieldName = field.getName();
+
+				try {
+					if (getOrDefault(className, fieldName, null, field.getType()) != null) {
+						field.setAccessible(true);
+
+						field.set(o, getOrDefault(className, fieldName, null, field.getType()));
+
 					}
+
+				} catch (IllegalArgumentException | IllegalAccessException e) {
+					DriverStation.reportWarning("Could not load item " + field.getName() + " from file " + filename,
+							e.getStackTrace());
 				}
-				field.getType();
 			}
 		}
 	}
