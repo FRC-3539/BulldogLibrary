@@ -11,6 +11,8 @@ import java.lang.reflect.Field;
 import org.ini4j.Wini;
 import org.ini4j.Profile.Section;
 
+import edu.wpi.first.wpilibj.DriverStation;
+
 /** Add your docs here. */
 public class INIConfig {
 	Wini ini;
@@ -26,21 +28,27 @@ public class INIConfig {
 	}
 
 	public void autoPopulate(Object o) {
-		Field[] fields = o.getClass().getFields();
-		for (Field field : fields) {
-			String[] split = field.getName().split("_");
-			int length = split.length;
-			if (length >= 2) {
-				try {
+		if (ini != null) {
+			Field[] fields = o.getClass().getFields();
+			for (Field field : fields) {
+				String[] split = field.getName().split("_");
+				int length = split.length;
+				if (length >= 2) {
+					try {
+						
+						if(getOrDefault(split[split.length - 2], split[split.length - 1], null, field.getType())!=null)
+						{
+							field.set(o,
+								getOrDefault(split[split.length - 2], split[split.length - 1], null, field.getType()));
+						}
 
-					field.set(o, getOrDefault(split[split.length - 2], split[split.length - 1], null, field.getType()));
-
-				} catch (IllegalArgumentException | IllegalAccessException e) {
-					// DriverStation.reportWarning("Could not load item "+field.getName()+" from
-					// file "+iniConfig.getFileName(), e.getStackTrace());
+					} catch (IllegalArgumentException | IllegalAccessException e) {
+						DriverStation.reportWarning("Could not load item " + field.getName() + " from file " + filename,
+								e.getStackTrace());
+					}
 				}
+				field.getType();
 			}
-			field.getType();
 		}
 	}
 
