@@ -20,14 +20,11 @@ public class INIConfig {
 
 	public INIConfig(String filename) {
 		this.filename = filename;
-		try {
-			ini = new Wini(new File(filename));
-		} catch (IOException e) {
-			ini = null;
-		}
+		reloadConfig();
 	}
 
 	public void autoPopulate(Object o) {
+		reloadConfig();
 		if (ini != null) {
 			Field[] fields = o.getClass().getFields();
 			String className = o.getClass().getSimpleName();
@@ -44,8 +41,8 @@ public class INIConfig {
 					}
 
 				} catch (IllegalArgumentException | IllegalAccessException e) {
-					DriverStation.reportWarning("Could not load item " + field.getName() + " from file " + filename,
-							e.getStackTrace());
+					//DriverStation.reportWarning("Could not load item " + field.getName() + " from file " + filename,
+					//		e.getStackTrace());
 				}
 			}
 		}
@@ -84,9 +81,43 @@ public class INIConfig {
 			ini = new Wini(new File(filename));
 			return true;
 		} catch (IOException e) {
+			//DriverStation.reportWarning("Could not load Ini File " + filename,
+			//				e.getStackTrace());
 			ini = null;
 		}
 		return false;
+	}
+
+	/**
+	 * 
+	 * @return True if save was successful. False if
+	 *         not.
+	 */
+	public boolean save(Object o) {
+		Field[] fields = o.getClass().getFields();
+		String className = o.getClass().getSimpleName();
+
+		ini = new Wini();
+		
+		for (Field field : fields) {
+			String fieldName = field.getName();
+
+			try {
+				field.setAccessible(true);
+				ini.add(className, fieldName, field.get(field.getType()));
+				ini.add("Type", fieldName,field.getType().getSimpleName());
+			} catch (IllegalArgumentException | IllegalAccessException e1) {
+				e1.printStackTrace();
+			}
+		}
+
+		try {
+			ini.store(new File(filename));
+			return true;
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			return false;
+		}
 	}
 
 }

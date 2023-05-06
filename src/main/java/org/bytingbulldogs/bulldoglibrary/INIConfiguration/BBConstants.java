@@ -21,4 +21,9 @@ public abstract class BBConstants {
 			iniConfig.autoPopulate(this);
 		
 	}
+	public void save()
+	{
+		iniConfig.save(this);
+		
+	}
 }
