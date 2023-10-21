@@ -6,8 +6,9 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
+
 allprojects {
-    group 'org.bytingbulldogs'
+    group 'com.github.BytingBulldogs3539.bulldoglibrary'
     version '1.5.0'
 
     repositories {

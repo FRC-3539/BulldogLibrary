@@ -1,6 +1,6 @@
-package org.bytingbulldogs.bulldoglibrary;
+package org.frcteam3539.BulldogLibrary;
 
-import org.bytingbulldogs.bulldoglibrary.INIConfiguration.BBConstants;
+import org.frcteam3539.BulldogLibrary.INIConfiguration.BBConstants;
 
 public class Test extends BBConstants{
     

@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package org.bytingbulldogs.bulldoglibrary.INIConfiguration;
+package org.frcteam3539.BulldogLibrary.INIConfiguration;
 
 import java.io.File;
 import java.io.IOException;
