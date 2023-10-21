@@ -14,9 +14,6 @@ allprojects {
         mavenCentral()
 
         maven { url = uri('https://frcmaven.wpi.edu/artifactory/release/') }
-
-        // CTRE
-        maven { url = uri('https://devsite.ctr-electronics.com/maven/release/') }
     }
 }
 
@@ -26,11 +23,6 @@ dependencies {
     implementation "edu.wpi.first.wpimath:wpimath-java:2024.1.1-beta-2"
 
     implementation group: 'org.ini4j', name: 'ini4j', version: '0.5.4'
-
-
-    // CTRE is implementation because it is not a hard requirement
-    implementation 'com.ctre.phoenix:api-java:5.30.3'
-    implementation 'com.ctre.phoenix:wpiapi-java:5.30.3'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'

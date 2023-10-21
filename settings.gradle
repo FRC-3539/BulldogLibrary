@@ -1,7 +1,1 @@
-pluginManagement {
-    plugins {
-        id 'edu.wpi.first.GradleRIO' version '2023.2.1'
-    }
-}
-
 rootProject.name = 'BulldogLibary'
