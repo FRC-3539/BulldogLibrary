@@ -1,8 +1,9 @@
 {
     "fileName": "BulldogLibrary.json",
     "name": "BulldogLibrary",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "uuid": "377c9d84-6152-11ed-9b6a-0242ac120002",
+    "frcYear": 2024,
     "mavenUrls": [
       "https://jitpack.io"
     ],
@@ -11,7 +12,7 @@
       {
         "groupId": "com.github.BytingBulldogs3539",
         "artifactId": "BulldogLibrary",
-        "version": "1.4.0"
+        "version": "1.5.0"
       }
     ],
     "jniDependencies": [],
