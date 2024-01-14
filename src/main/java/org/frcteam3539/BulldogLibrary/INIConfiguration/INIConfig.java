@@ -41,8 +41,9 @@ public class INIConfig {
 					}
 
 				} catch (IllegalArgumentException | IllegalAccessException e) {
-					//DriverStation.reportWarning("Could not load item " + field.getName() + " from file " + filename,
-					//		e.getStackTrace());
+					System.err.println("Could not load item " + field.getName() + " from file " + filename);
+					// DriverStation.reportWarning("Could not load item " + field.getName() + " from file " + filename,
+					// 		e.getStackTrace());
 				}
 			}
 		}
