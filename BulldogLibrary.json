@@ -1,18 +1,18 @@
 {
     "fileName": "BulldogLibrary.json",
     "name": "BulldogLibrary",
-    "version": "2025.1.0",
+    "version": "2025.1.1",
     "uuid": "377c9d84-6152-11ed-9b6a-0242ac120002",
     "frcYear": 2025,
     "mavenUrls": [
       "https://jitpack.io"
     ],
-    "jsonUrl": "https://raw.githubusercontent.com/BytingBulldogs3539/BulldogLibrary/main/BulldogLibrary.json",
+    "jsonUrl": "https://raw.githubusercontent.com/FRC-3539/BulldogLibrary/main/BulldogLibrary.json",
     "javaDependencies": [
       {
-        "groupId": "com.github.BytingBulldogs3539",
+        "groupId": "com.github.FRC-3539",
         "artifactId": "BulldogLibrary",
-        "version": "2025.1.0"
+        "version": "2025.1.1"
       }
     ],
     "jniDependencies": [],
