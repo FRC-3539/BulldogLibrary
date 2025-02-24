@@ -9,21 +9,23 @@ public abstract class BBConstants {
 	private INIConfig iniConfig;
 	private Boolean reloadable;
 
-	public BBConstants(String fileName, boolean reloadable)
-	{
+	public BBConstants(String fileName, boolean reloadable) {
 		iniConfig = new INIConfig(fileName);
 		iniConfig.autoPopulate(this);
 		this.reloadable = reloadable;
 	}
-	public void reload()
-	{
-		if(this.reloadable)
+
+	public void reload() {
+		if (this.reloadable)
 			iniConfig.autoPopulate(this);
-		
+
 	}
-	public void save()
-	{
+
+	public void save() {
 		iniConfig.save(this);
-		
+	}
+
+	public boolean writeToNetworkTable() {
+		return iniConfig.writeToNetworkTable();
 	}
 }

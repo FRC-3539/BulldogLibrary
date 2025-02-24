@@ -22,6 +22,7 @@ dependencies {
     implementation "edu.wpi.first.wpilibj:wpilibj-java:2025.3.1"
     implementation "edu.wpi.first.wpiutil:wpiutil-java:2025.3.1"
     implementation "edu.wpi.first.wpimath:wpimath-java:2025.3.1"
+    implementation 'edu.wpi.first.ntcore:ntcore-java:2025.1.1'
 
     implementation group: 'org.ini4j', name: 'ini4j', version: '0.5.4'
 

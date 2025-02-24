@@ -10,6 +10,9 @@ import java.lang.reflect.Field;
 
 import org.ini4j.Wini;
 import org.ini4j.Profile.Section;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.NetworkTableValue;
+import edu.wpi.first.networktables.NetworkTable;
 
 /** Add your docs here. */
 public class INIConfig {
@@ -114,4 +117,23 @@ public class INIConfig {
 		}
 	}
 
+	public boolean writeToNetworkTable() {
+		boolean ret = true;
+		Field[] fields = this.getClass().getFields();
+		String className = this.getClass().getSimpleName();
+
+		NetworkTableInstance inst = NetworkTableInstance.getDefault();
+		NetworkTable table = inst.getTable("INIConfig").getSubTable(className);
+
+		for (Field field : fields) {
+			field.setAccessible(true);
+			try {
+				table.getEntry(field.getName()).setValue(field.get(field.getType()));
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				e.printStackTrace();
+				ret = false;
+			}
+		}
+		return ret;
+	}
 }
