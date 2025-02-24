@@ -9,7 +9,7 @@ targetCompatibility = JavaVersion.VERSION_17
 
 allprojects {
     group 'com.github.FRC-3539.bulldoglibrary'
-    version '2025.2.1'
+    version '2025.2.2'
 
     repositories {
         mavenCentral()

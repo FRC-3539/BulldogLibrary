@@ -26,6 +26,6 @@ public abstract class BBConstants {
 	}
 
 	public boolean writeToNetworkTable() {
-		return iniConfig.writeToNetworkTable();
+		return iniConfig.writeToNetworkTable(this);
 	}
 }
