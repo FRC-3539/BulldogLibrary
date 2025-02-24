@@ -11,8 +11,6 @@ import java.lang.reflect.Field;
 import org.ini4j.Wini;
 import org.ini4j.Profile.Section;
 
-import edu.wpi.first.wpilibj.DriverStation;
-
 /** Add your docs here. */
 public class INIConfig {
 	Wini ini;
@@ -35,15 +33,10 @@ public class INIConfig {
 				try {
 					if (getOrDefault(className, fieldName, null, field.getType()) != null) {
 						field.setAccessible(true);
-
 						field.set(o, getOrDefault(className, fieldName, null, field.getType()));
-
 					}
-
 				} catch (IllegalArgumentException | IllegalAccessException e) {
 					System.err.println("Could not load item " + field.getName() + " from file " + filename);
-					// DriverStation.reportWarning("Could not load item " + field.getName() + " from file " + filename,
-					// 		e.getStackTrace());
 				}
 			}
 		}
@@ -82,8 +75,6 @@ public class INIConfig {
 			ini = new Wini(new File(filename));
 			return true;
 		} catch (IOException e) {
-			//DriverStation.reportWarning("Could not load Ini File " + filename,
-			//				e.getStackTrace());
 			ini = null;
 		}
 		return false;
@@ -98,15 +89,17 @@ public class INIConfig {
 		Field[] fields = o.getClass().getFields();
 		String className = o.getClass().getSimpleName();
 
-		ini = new Wini();
-		
+		if (ini == null) {
+			ini = new Wini();
+		}
+
 		for (Field field : fields) {
 			String fieldName = field.getName();
 
 			try {
 				field.setAccessible(true);
 				ini.add(className, fieldName, field.get(field.getType()));
-				ini.add("Type", fieldName,field.getType().getSimpleName());
+				ini.add("Type", fieldName, field.getType().getSimpleName());
 			} catch (IllegalArgumentException | IllegalAccessException e1) {
 				e1.printStackTrace();
 			}
