@@ -7,6 +7,8 @@ package org.frcteam3539.BulldogLibrary.INIConfiguration;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.List;
 
 import org.ini4j.Wini;
 import org.ini4j.Profile.Section;
@@ -17,6 +19,7 @@ import edu.wpi.first.networktables.NetworkTable;
 public class INIConfig {
 	Wini ini;
 	private String filename;
+	public static List<String> supportedTypes = Arrays.asList("String", "int", "double", "boolean");
 
 	public INIConfig(String filename) {
 		this.filename = filename;
@@ -98,6 +101,11 @@ public class INIConfig {
 		for (Field field : fields) {
 			String fieldName = field.getName();
 
+			if(!supportedTypes.contains(field.getType().getSimpleName()))
+			{
+				continue;
+			}
+
 			try {
 				field.setAccessible(true);
 				ini.add(className, fieldName, field.get(field.getType()));
@@ -127,6 +135,7 @@ public class INIConfig {
 		for (Field field : fields) {
 			field.setAccessible(true);
 			try {
+				
 				table.getEntry(field.getName()).setValue(field.get(field.getType()));
 			} catch (IllegalArgumentException | IllegalAccessException e) {
 				e.printStackTrace();
